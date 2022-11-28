@@ -1,0 +1,4 @@
+SELECT Broker.Name AS [BROKER NAME], COUNT(*) AS [AMOUNT OF CUSTOMERS] FROM Customer
+INNER JOIN Broker ON Customer.BrokerID = Broker.BrokerID
+GROUP BY Customer.BrokerID
+ORDER BY COUNT(*) DESC, [BROKER NAME] ASC;
