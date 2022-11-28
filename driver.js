@@ -1,6 +1,11 @@
 const API_ENDPOINT = `https://api.publicapis.org/entries`;
-const limit = 5;
-const selected_category = "Anime";
+const commandArgs = process.argv.slice(2);
+
+
+// Needs input validation
+const selected_category = `${commandArgs[0]}`;
+const limit = +commandArgs[1];
+
 
 
 
