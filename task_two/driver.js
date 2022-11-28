@@ -1,11 +1,34 @@
 const API_ENDPOINT = `https://api.publicapis.org/entries`;
 const commandArgs = process.argv.slice(2);
 
+const possible_categories = ["Animals", "Anime", "Blockchain", "Books", "Business", "Calendar", "Health", "Jobs", "Music", "Transportation", "Weather"]
+
 
 // Needs input validation
 const selected_category = `${commandArgs[0]}`;
 const limit = +commandArgs[1];
 
+// Test input against whitelist
+if (!possible_categories.includes(selected_category))
+{
+    throw new Error(`\nInvalid category. Please select from the following: \n${possible_categories.toString()}`)
+}
+
+// Check that limit is an integer number and is positive
+if (typeof limit !== 'number')
+{
+    throw new Error(`Limit is not a number. Please try again.`)
+}
+
+if (!Number.isInteger(limit))
+{
+    throw new Error(`Limit is not an integer. Please try again.`)
+}
+
+if (limit < 0)
+{
+    throw new Error(`Limit should be positive. Please try again.`)
+}
 
 
 
